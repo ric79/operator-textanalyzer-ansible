@@ -48,6 +48,8 @@ spec:
             type: object
             x-kubernetes-preserve-unknown-fields: true
         type: object
+        
+    # Added by RR
     additionalPrinterColumns:
       - name: version
         type: string
