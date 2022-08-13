@@ -7,6 +7,8 @@
 *.dylib
 bin
 
+*.pyc
+
 # editor and IDE paraphernalia
 .idea
 *.swp
