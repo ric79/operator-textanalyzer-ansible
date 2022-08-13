@@ -1,0 +1,24 @@
+# permissions for end users to edit textanalyzers.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: textanalyzer-editor-role
+rules:
+- apiGroups:
+  - converter.operators.mytest.it
+  resources:
+  - textanalyzers
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - converter.operators.mytest.it
+  resources:
+  - textanalyzers/status
+  verbs:
+  - get

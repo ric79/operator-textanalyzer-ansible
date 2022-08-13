@@ -1,0 +1,10 @@
+apiVersion: converter.operators.mytest.it/v1
+kind: TextAnalyzer
+metadata:
+  name: textanalyzer-sample
+  #annotations:
+  #  "ansible.sdk.operatorframework.io/verbosity": "7"
+spec:
+  # TODO(user): Add fields here
+  text: AAA BBB
+  hash: CRC32 

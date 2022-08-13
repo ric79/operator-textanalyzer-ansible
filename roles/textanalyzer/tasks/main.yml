@@ -1,0 +1,17 @@
+---
+# tasks file for TextAnalyzer
+
+- name: "Create configmap linked to CR"
+  #community.kubernetes.k8s:
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: "{{ ansible_operator_meta.name }}-cm"
+        namespace: "{{ ansible_operator_meta.namespace }}"
+      data:
+         hash: "{{ text | compute_hash( hash )}}"
+         val: "{{ hash }}"
+
