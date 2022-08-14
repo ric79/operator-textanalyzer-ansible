@@ -1,0 +1,32 @@
+---
+- name: "Controlled Deletion playbook"
+  hosts: localhost
+  tasks:
+  - debug:
+      msg: "Foo is {{ foo }}"
+
+  - name: "Get a list of all ConfigMaps"
+    kubernetes.core.k8s_info:
+      api_version: v1
+      kind: textanalyzers.converter.operators.mytest.it
+      namespace: "{{ ansible_operator_meta.namespace }}"
+    register: tan
+
+  - name: "Print all Custom Resources"
+    debug:
+      msg: "{{ tan | json_query(jmesquery) }}"
+    vars:
+      jmesquery: "resources[].metadata.name"
+
+  - name: "Get a list of all ConfigMaps"
+    kubernetes.core.k8s_info:
+      api_version: v1
+      kind: ConfigMap
+      namespace: "{{ ansible_operator_meta.namespace }}"
+    register: cm
+
+  - name: "Print all ConfigMaps"
+    debug:
+      msg: "{{ cm | json_query(jmesquery) }}"
+    vars:
+      jmesquery: "resources[].metadata.name"
